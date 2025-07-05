@@ -13,7 +13,18 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        // Create an Array with equal length of the length param number
+        double[] multiples = new double[length];
+
+        // Loop until as long "i" is not greater than length
+        for (int i = 1; i <= length; i++)
+        {
+            // Create multiples of "number"
+            // Minus 1 from i to start from index 0
+            multiples[i - 1] = number * i;
+        }
+
+        return multiples; // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +40,21 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        int count = data.Count;
+
+        // Prevent amount from exceeding the length of data
+        int newAmount = amount % count;
+
+        // Get first part
+        List<int> numbers = data.GetRange(count - newAmount, newAmount);
+
+        //Get and add second part
+        numbers.AddRange(data.GetRange(0, count - newAmount));
+
+        // Insert rotated number
+        data.InsertRange(0, numbers);
+
+        // Remove actual numbers from list
+        data.RemoveRange(count, count);
     }
 }
