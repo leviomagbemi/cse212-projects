@@ -46,13 +46,13 @@ public static class Arrays
         int newAmount = amount % count;
 
         // Get first part
-        List<int> numbers = data.GetRange(count - newAmount, newAmount);
+        List<int> rotatedList = data.GetRange(count - newAmount, newAmount);
 
         //Get and add second part
-        numbers.AddRange(data.GetRange(0, count - newAmount));
+        rotatedList.AddRange(data.GetRange(0, count - newAmount));
 
-        // Insert rotated number
-        data.InsertRange(0, numbers);
+        // Insert rotated List to main list
+        data.InsertRange(0, rotatedList);
 
         // Remove actual numbers from list
         data.RemoveRange(count, count);
