@@ -8,7 +8,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Create a queue with the following Value and priority and return in order of higest priority or FIFO if higest priority clashes: Game (2), Family (10), Studies (10), Work (8), Hangout (6)
     // Expected Result: family, studies, work, friendsHangout, game
-    // Defect(s) Found: HighPriorityIndex was being set to index even when the previous priority value is the same with the priority at the current iteration. This will make the queue not to return the same highest priority in the right order(FIFO)
+    // Defect(s) Found: HighPriorityIndex was being set to index even when the previous priority value is the same with the priority at the current iteration. This will make the queue not to return the same highest priority in the right order(FIFO). Highest priority was not also removed from the list.
     public void TestPriorityQueue_1()
     {
         var priorityQueue = new PriorityQueue();

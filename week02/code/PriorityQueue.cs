@@ -17,7 +17,7 @@
 
     public string Dequeue()
     {
-        if (IsEmpty()) // Verify the queue is not empty
+        if (_queue.Count == 0) // Verify the queue is not empty
         {
             throw new InvalidOperationException("The queue is empty.");
         }
@@ -34,14 +34,9 @@
         
 
         // Remove and return the item with the highest priority
-            var value = _queue[highPriorityIndex].Value;
+        var value = _queue[highPriorityIndex].Value;
         _queue.RemoveAt(highPriorityIndex);
         return value;
-    }
-
-    public bool IsEmpty()
-    {
-        return _queue.Count == 0;
     }
 
     public override string ToString()
