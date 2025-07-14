@@ -17,22 +17,31 @@
 
     public string Dequeue()
     {
-        if (_queue.Count == 0) // Verify the queue is not empty
+        if (IsEmpty()) // Verify the queue is not empty
         {
             throw new InvalidOperationException("The queue is empty.");
         }
 
         // Find the index of the item with the highest priority to remove
         var highPriorityIndex = 0;
-        for (int index = 1; index < _queue.Count - 1; index++)
+        for (int index = 0; index < _queue.Count; index++)
         {
-            if (_queue[index].Priority >= _queue[highPriorityIndex].Priority)
+            if (_queue[index].Priority > _queue[highPriorityIndex].Priority)
+            {
                 highPriorityIndex = index;
+            }
         }
+        
 
         // Remove and return the item with the highest priority
-        var value = _queue[highPriorityIndex].Value;
+            var value = _queue[highPriorityIndex].Value;
+        _queue.RemoveAt(highPriorityIndex);
         return value;
+    }
+
+    public bool IsEmpty()
+    {
+        return _queue.Count == 0;
     }
 
     public override string ToString()
