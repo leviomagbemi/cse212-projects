@@ -12,34 +12,70 @@ public class Node
     public void Insert(int value)
     {
         // TODO Start Problem 1
+        if (value == Data)
+            return;
 
         if (value < Data)
-        {
-            // Insert to the left
-            if (Left is null)
-                Left = new Node(value);
+            {
+                // Insert to the left
+                if (Left is null)
+                    Left = new Node(value);
+                else
+                    Left.Insert(value);
+            }
             else
-                Left.Insert(value);
-        }
-        else
-        {
-            // Insert to the right
-            if (Right is null)
-                Right = new Node(value);
-            else
-                Right.Insert(value);
-        }
+            {
+                // Insert to the right
+                if (Right is null)
+                    Right = new Node(value);
+                else
+                    Right.Insert(value);
+            }
     }
 
     public bool Contains(int value)
     {
         // TODO Start Problem 2
-        return false;
+        if (value == Data)
+        return true;
+
+        if (value < Data)
+        {
+            if (Left == null)
+                return false;
+            return Left.Contains(value);
+        }
+        else
+        {
+            if (Right == null)
+                return false;
+            return Right.Contains(value);
+        }
     }
 
     public int GetHeight()
     {
         // TODO Start Problem 4
-        return 0; // Replace this line with the correct return statement(s)
+        int leftHeight = 0;
+        int rightHeight = 0;
+
+        if (Left != null)
+        {
+            leftHeight = Left.GetHeight();
+        }
+
+        if (Right != null)
+        {
+            rightHeight = Right.GetHeight();
+        }
+
+        if (leftHeight > rightHeight)
+        {
+            return leftHeight + 1;
+        }
+        else
+        {
+            return rightHeight + 1;
+        } // Replace this line with the correct return statement(s)
     }
 }
